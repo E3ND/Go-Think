@@ -55,6 +55,7 @@ app.use(session({
 
 // public path
 app.use(express.static('public'))
+app.use(express.static('public/users'));
 
 // Flash messages
 app.use(flash())
