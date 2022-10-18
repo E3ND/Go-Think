@@ -8,7 +8,7 @@ Para instalar o projeto na sua máquina, basta clonar o repositório e dar o com
 
 Futuras implementações:
 
-Adição de imagem com o pensamento;
+Adição de imagem com o pensamento: 🆗;
 
 Foto de perfil;
 
