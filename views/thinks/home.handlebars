@@ -33,9 +33,15 @@
     {{#each thinks}}
         <figure>
             <blockquote>
-                "{{this.title}}"
+                <p>{{this.title}}</p>
+            </blockquote>
+            <blockquote>
+                {{#if this.image}}
+                    <a href="{{this.image}}" target="_blank"> <img src="{{this.image}}"/></a>
+                {{/if}} 
             </blockquote>
             <figcaption>Por <span>{{this.User.name}}</span></figcaption>
         </figure>
     {{/each}}
 </div>
+

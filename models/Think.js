@@ -11,6 +11,12 @@ const Think = db.define('Think', {
         allowNull: false,
         require: true
     },
+
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        require: false
+    }
 })
 
 // Um pensamento pertece a um usuario

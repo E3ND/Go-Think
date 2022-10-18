@@ -4,6 +4,8 @@ const User = require('../models/User')
 // Operador de busca
 const { Op } = require('sequelize')
 
+const uploadUser = require('../helpers/uploadImage')
+
 module.exports = class ThinkController {
     static async showThinks(req, res) {
         // Mecanismo de busca
@@ -81,9 +83,16 @@ module.exports = class ThinkController {
     }
 
     static async createThinksSave(req, res) {
+        let image = null
+
+        if(req.file){
+            image = req.file.filename
+        } 
+
         const think = {
             title: req.body.title,
-            UserId: req.session.userid
+            UserId: req.session.userid,
+            image: image,
         }
 
         try {
@@ -138,8 +147,15 @@ module.exports = class ThinkController {
     static async updateThinksSave(req, res) {
         const id = req.body.id
 
+        let image = null
+
+        if(req.file){
+            image = req.file.filename
+        } 
+
         const think = {
-            title: req.body.title
+            title: req.body.title,
+            image: image,
         }
 
         try {
