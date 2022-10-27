@@ -1,0 +1,59 @@
+<div class="think-container">
+    <figure>
+        <blockquote>
+            <p>{{think.dataValues.title}}</p> 
+        </blockquote>
+
+        <blockquote>
+            {{#if think.dataValues.image}}
+                <a href="{{think.dataValues.image}}" target="_blank"> <img src="../../{{think.dataValues.image}}" /></a>
+            {{/if}}
+        </blockquote>
+
+        <figcaption>Por <span>{{think.User.dataValues.name}}</span></figcaption>
+
+        <figcaption>
+            <div class="answer"><a href="">Responder</a></div>
+        </figcaption>
+    </figure>
+
+    <div class="think-form-container">
+        <form action="/answers/createAnswer" method="POST" enctype="multipart/form-data">
+            <div class="form-control-answer">
+                <input type="hidden" name="ThinkId" value="{{think.dataValues.id}}" />
+
+                <label for="text">Resposta</label>
+                <input type="text" name="answerText" placeholder="Digite sua resposta ao pensamento de {{think.User.dataValues.name}}" />
+
+                <input type="file" name="answerImage" />
+                <input type="submit" value="Responder" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="think-answers">
+        <div class="line" />
+        <p>Respostas</p>
+    </div>
+</div>
+
+{{!-- <div class="think-form-container">
+
+</div> --}}
+
+<div class="think-container">
+    {{#each answers}}
+        <figure>
+            <blockquote>
+                <p>{{this.answerText}}</p>
+            </blockquote>
+            <blockquote>
+                {{#if this.answerImage}}
+                    <a href="http://localhost:3333/{{this.answerImage}}" target="_blank"> <img src="../../{{this.answerImage}}"/></a>
+                {{/if}} 
+            </blockquote>
+            <figcaption>Por <a href="#"><span>{{this.[User.name]}}</span></a></figcaption>
+        </figure>
+    {{/each}}
+</div>
