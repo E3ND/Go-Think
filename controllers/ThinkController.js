@@ -66,7 +66,7 @@ module.exports = class ThinkController {
             return
         }
 
-       // Pe3gando somente os dataValues do array de dados que vem do include
+       // Pegando somente os dataValues do array de dados que vem do include
        const thinks = user.Thinks.map((result) => result.dataValues)
 
        let emptyThinks = false
@@ -140,7 +140,7 @@ module.exports = class ThinkController {
                 id: id,
             }
         })
-
+        
         res.render('thinks/edit', { think })
     }
 

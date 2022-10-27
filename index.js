@@ -11,10 +11,12 @@ const conn = require('./db/conn')
 // Models
 const Think = require('./models/Think')
 const User = require('./models/User')
+const Answer = require('./models/Answer')
 
 // Routes
 const thinkRoutes = require('./routes/thinkRoutes')
 const authRoutes = require('./routes/authRoutes')
+const answersRoutes = require('./routes/answerRoutes')
 
 // Controllers
 const ThinkController = require('./controllers/ThinkController')
@@ -33,6 +35,10 @@ app.use(
     })
 )
 
+// public path
+app.use(express.static('public'))
+app.use(express.static('public/users'));
+
 app.use(express.json())
 
 // Session middleware
@@ -48,17 +54,13 @@ app.use(session({
     cookie: {
         secure: false,
         maxAge: 360000,
-        expires: new Date(Date.now() + 360000),
+        expires: new Date(Date.now() + 36000),
         httpOnly: true
     }
 }))
 
-// public path
-app.use(express.static('public'))
-app.use(express.static('public/users'));
-
-// Flash messages
-app.use(flash())
+// Bug do cookie
+// https://acervolima.com/cookies-de-sessao-em-nodejs/
 
 // set session to res
 app.use((req, res, next) => {
@@ -69,11 +71,17 @@ app.use((req, res, next) => {
     next()
 })
 
+// Flash messages
+app.use(flash())
+
 // Routes
 app.use('/thinks', thinkRoutes)
 
 // Auth Routes
 app.use('/', authRoutes)
+
+// Answer Routes
+app.use('/answers', answersRoutes)
 
 app.get('/', ThinkController.showThinks)
 

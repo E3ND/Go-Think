@@ -2,6 +2,7 @@
     --font-color: #fff;
     --background: #222;
     --color-site: #1eb82b;
+    --color-site-hover: #198121;
     --warning: #b40404;
 }
 
@@ -306,6 +307,7 @@ h3 {
     font-size: 1.5em;
     margin-bottom: .4em;
     word-break: break-all;
+    color: var(--color-site);
 }
 
 .think-container blockquote a img {
@@ -317,8 +319,41 @@ h3 {
     width: 50em;
 }
 
-.think-container span {
+.think-container span, .think-container a {
     color: var(--color-site);
+    text-decoration: none;
+}
+
+.think-container a span:hover {
+    color: var(--color-site-hover);
+    transition: 0.5s;
+}
+
+.think-answers {
+    width: 90px;
+    padding: 1em;
+    margin: auto;
+}
+
+.form-control-answer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    width: auto;
+    margin: auto;
+}
+
+.line {
+    height: 50px;
+    margin: auto;
+    display: inline-block;
+    border-left: 1px solid var(--color-site);
+}
+
+.think-answers p {
+    padding: 0.5em;
+    margin: 0.6em auto 1em;
+    display: inline-block;
 }
 
 /* Footer */

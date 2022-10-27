@@ -46,11 +46,10 @@ module.exports = class AuthController {
         req.session.userid = user.id
 
         req.flash('messageConfirm', 'Logado com sucesso!')
+        
         req.session.save(() => {
             res.redirect('/')
         })
-
-        
     }
 
     static register(req, res) {
